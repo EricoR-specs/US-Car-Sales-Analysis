@@ -1,0 +1,60 @@
+Untuk melakukan DDL saya menggunakan query berikut :
+pertama  membuat database dengan menggunakan query :
+''' sql
+CREATE DATABASE Milestone3;
+'''
+Kedua membuat table dengan menggunakan query :
+''' sql
+CREATE TABLE table_m3 (
+  index INT,
+  year INT,
+  make VARCHAR(50),
+  model VARCHAR(50),
+  trim VARCHAR(50),
+  body VARCHAR(20),
+  transmission VARCHAR(20),
+  vin VARCHAR(20) UNIQUE,
+  state VARCHAR(20),
+  condition VARCHAR(20),
+  odometer FLOAT,
+  color VARCHAR(20),
+  interior VARCHAR(20),
+  seller VARCHAR(50),
+  mmr DECIMAL(10, 2),
+  sellingprice DECIMAL(10, 2),
+  saledate VARCHAR(50)
+); '''
+
+Untuk melakukan DML, disebabkan QUERY berikut :
+Melakukan copy data dari file P2M3_Erico_data_raw.csv ke table data_m3
+
+''' sql
+COPY table_m3 (
+    index,
+    year,
+    make,
+    model,
+    trim,
+    body,
+    transmission,
+    vin,
+    state,
+    condition,
+    odometer,
+    color,
+    interior,
+    seller,
+    mmr,
+    sellingprice,
+    saledate
+)
+FROM 'C:\Users\muham\Documents\hacktiv8\p2-ftds007-bsd-m3-EricoR-specs\P2M3_Erico_data_raw.csv'
+DELIMITER ','
+CSV HEADER;
+'''
+
+Namun karena query tersebut tidak masih tidak bisa dijalankan, maka setelah saya cari info saya disarankan melakukan alternatif dengan PSQL Tool kode berikut :
+
+''' PSQL Tool
+\copy table_m3 FROM 'C:\Users\muham\Documents\hacktiv8\p2-ftds007-bsd-m3-EricoR-specs\P2M3_Erico_data_raw.csv' DELIMITER ',' CSV HEADER;
+'''
